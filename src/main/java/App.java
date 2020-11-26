@@ -1,5 +1,5 @@
-package HeroSquad;
-
+import HeroSquad.Hero;
+import HeroSquad.Squad;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -8,17 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.*;
+import static spark.Spark.get;
 
 public class App {
-    static int getHerokuAssignedPort() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
-        }
-        return 4567; //return default port if herokugit-port isn't set (i.e. on localhost)
-    }
     public static void main(String[] args) {
-        port(getHerokuAssignedPort());
         staticFileLocation("/public");
         Hero hero1 =new Hero("Absorbing Man",30,"Absorbing ","Can Absorb evil thought",20,60);
         Hero hero2 =new Hero("A-Bomb",30,"Throw bombs for long distances ","Water ",20,60);
